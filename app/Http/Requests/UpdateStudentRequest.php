@@ -20,7 +20,7 @@ class UpdateStudentRequest extends FormRequest
             : $this->route('student');
 
         return [
-            'user_id' => ['nullable', 'exists:users,id'],
+            'user_id' => ['nullable', 'exists:users,id', Rule::unique('students', 'user_id')->ignore($studentId)],
             'nis' => ['required', 'string', 'max:20', Rule::unique('students', 'nis')->ignore($studentId)],
             'nisn' => ['required', 'string', 'max:20', Rule::unique('students', 'nisn')->ignore($studentId)],
             'nama_lengkap' => ['required', 'string', 'max:255'],

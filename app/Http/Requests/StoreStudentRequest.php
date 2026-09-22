@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreStudentRequest extends FormRequest
 {
@@ -14,7 +15,7 @@ class StoreStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['nullable', 'exists:users,id'],
+            'user_id' => ['nullable', 'exists:users,id', Rule::unique('students', 'user_id')],
             'nis' => ['required', 'string', 'max:20', 'unique:students,nis'],
             'nisn' => ['required', 'string', 'max:20', 'unique:students,nisn'],
             'nama_lengkap' => ['required', 'string', 'max:255'],
