@@ -16,12 +16,12 @@
             <div class="flex items-center gap-2">
                 @if((Auth::user()->isApprover() || Auth::user()->isAdmin()))
                     <a href="{{ route('approvals.show', $submission) }}" class="bg-[#1B6CF2] hover:bg-[#1455C0] text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all">
-                        Tindaklanjuti Approval
+                        Lanjutkan Approval
                     </a>
                 @endif
 
                 @if($submission->status === 'menunggu' && (Auth::user()->isAdmin() || Auth::user()->id === $submission->user_id))
-                    <form method="POST" action="{{ route('submissions.destroy', $submission) }}" onsubmit="return confirm('Apakah Anda yakin ingin membatalkan pengajuan ini?');" class="inline">
+                    <form method="POST" action="{{ route('submissions.destroy', $submission) }}" onsubmit="return confirmDelete(event, 'Apakah Anda yakin ingin membatalkan pengajuan ini?');" class="inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-700 px-5 py-2.5 rounded-xl text-xs font-bold transition-all">

@@ -135,7 +135,7 @@
                                         @endif
 
                                         @if($sub->status === 'menunggu' && (Auth::user()->isAdmin() || Auth::user()->id === $sub->user_id))
-                                            <form method="POST" action="{{ route('submissions.destroy', $sub) }}" onsubmit="return confirm('Batalkan pengajuan ini?');" class="inline">
+                                            <form method="POST" action="{{ route('submissions.destroy', $sub) }}" onsubmit="return confirmDelete(event, 'Batalkan pengajuan ini?');" class="inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-700 font-bold px-3 py-1 rounded-lg text-[11px] transition-colors border border-rose-200">

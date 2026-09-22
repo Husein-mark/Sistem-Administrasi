@@ -16,7 +16,7 @@
             <a href="{{ route('students.edit', $student) }}" class="bg-[#1B6CF2] hover:bg-[#1455C0] text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all">
                 Ubah Profil
             </a>
-            <form method="POST" action="{{ route('students.destroy', $student) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data siswa ini?');" class="inline">
+            <form method="POST" action="{{ route('students.destroy', $student) }}" onsubmit="return confirmDelete(event, 'Apakah Anda yakin ingin menghapus data siswa ini?');" class="inline">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-700 px-5 py-2.5 rounded-xl text-xs font-bold transition-all">

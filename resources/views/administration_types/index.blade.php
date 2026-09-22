@@ -73,7 +73,7 @@
                                         </a>
 
                                         @if($type->submissions_count === 0)
-                                            <form method="POST" action="{{ route('administration-types.destroy', $type) }}" onsubmit="return confirm('Hapus jenis layanan ini?');" class="inline">
+                                            <form method="POST" action="{{ route('administration-types.destroy', $type) }}" onsubmit="return confirmDelete(event, 'Hapus jenis layanan ini?');" class="inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-700 font-bold px-3 py-1 rounded-lg text-[11px] transition-colors">
